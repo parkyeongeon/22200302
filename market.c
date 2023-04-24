@@ -3,28 +3,28 @@
 #include "manager.h"
 
 int main(void){
-    
+
     Product slist[100];
     int curcount=0;
     int count = 0, menu;
-    
+
     count = loadData(slist);
-    curcount=count; 
+    curcount=count;
 
     while (1){
         menu = selectMenu();
         getchar();
         if(menu == 0) break;
-        if(menu == 1 || menu ==3 || menu == 4){	
-		    if (count==0){ 
+        if(menu == 1 || menu ==3 || menu == 4){
+                    if (count==0){
                 printf(" 데이터가 없습니다!\n");
-			    continue;
-			}
-		}
+                            continue;
+                        }
+                }
 
-        if(menu == 1) listProduct(slist,curcount); 
+        if(menu == 1) listProduct(slist,curcount);
         else if (menu == 2) {
-            count+=createProduct(&slist[curcount++]); 
+            count+=createProduct(&slist[curcount++]);
         }
         else if (menu == 3) {
             int no=selectDataNo(slist, curcount);
@@ -44,15 +44,15 @@ int main(void){
             printf("정말로 삭제하시겠습니까?(삭제:1)");
             scanf("%d",&deleteok);
             if(deleteok == 1){
-                if(deleteProduct(&slist[no-1])) count --;       
-           	 } 
+                if(deleteProduct(&slist[no-1])) count --;
+                 }
         }
-	    else if (menu == 5){
-		    if (count==0) printf("데이터가 없습니다!\n");
-		    else saveData(slist,curcount);
-	    }
-	}
+            else if (menu == 5){
+                    if (count==0) printf("데이터가 없습니다!\n");
+                    else saveData(slist,curcount);
+            }
+        }
 
-	printf("\n종료됨!\n");
-   	return 0;
+        printf("\n종료됨!\n");
+        return 0;
 }
